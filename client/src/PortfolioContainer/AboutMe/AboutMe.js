@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ScreenHeading from "../../utilities/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utilities/ScrollService";
 import Animation from "../../utilities/Animation";
-import "./AboutMe.css"
+import "./AboutMe.css";
 
 export default function AboutMe(props) {
   let fadeInScreenHandler = (screen) => {
@@ -17,7 +17,6 @@ export default function AboutMe(props) {
       "I want to participate in big and important projects and be part of a change in the future of the technology.",
     highlights: {
       bullets: [
-        "Full-Stack Web Developer",
         "JavaScript",
         "ExpressJS",
         "GatsbyJS",
@@ -28,7 +27,12 @@ export default function AboutMe(props) {
         "HTML5",
         "MongoDB",
         "MySQL",
-        "SASS"
+        "SASS",
+        "Storybook",
+        "Cypress",
+        "Tailwind CSS",
+        "Atlassian Toolstack (Jira, Confluence, Git)",
+        "Agile/Scrum",
       ],
       heading: " Some Highlights:",
     },
@@ -42,9 +46,7 @@ export default function AboutMe(props) {
     ));
   };
   return (
-    <div className="about-me-container screen-container" 
-    id={props.id || ""}
-    >
+    <div className="about-me-container screen-container" id={props.id || ""}>
       <div className="about-me-parent">
         <ScreenHeading title={"About Me"} subHeading={"Why Me?"} />
         <div className="about-me-card">
