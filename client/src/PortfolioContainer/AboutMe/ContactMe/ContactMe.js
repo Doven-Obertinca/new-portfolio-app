@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Typical from "react-typical";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -24,6 +23,19 @@ export default function ContactMe(props) {
   const [banner, setBanner] = useState("");
   const [bool, setBool] = useState(false);
 
+  const [typewriterIndex, setTypewriterIndex] = useState(0);
+  const typewriterText = ["Get in touch!!"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTypewriterIndex(
+        (prevIndex) => (prevIndex + 1) % typewriterText.length
+      );
+    }, 1000); // Adjust the timing as needed
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleName = (e) => {
     setName(e.target.value);
   };
@@ -33,7 +45,7 @@ export default function ContactMe(props) {
   const handleMessge = (e) => {
     setMessage(e.target.value);
   };
-  console.log(name);
+
   const submitForm = async (e) => {
     try {
       let data = {
@@ -57,15 +69,13 @@ export default function ContactMe(props) {
     }
     // e.preventDefault();
   };
+
   return (
     <div className="main-container" id={props.id || ""}>
       <ScreenHeading subHeading={"lets keep in touch"} title={"Contact Me"} />
       <div className="central-form">
         <div className="col">
-          <h2 className="title">
-            {" "}
-            <Typical loop={Infinity} steps={["Get in touch!!", 1000]} />
-          </h2>
+          <h2 className="title">{typewriterText[typewriterIndex]}</h2>
           <a href="https://github.com/Doven-Obertinca" target="_blank">
             <i className="fa fa-github-square"></i>
           </a>
